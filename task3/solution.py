@@ -19,6 +19,8 @@ def appearance(intervals: dict[str, list[int]]) -> int:
             t.append(r)
     p_i = 0
     t_i = 0
+    if not p or not t or not intervals['lesson']:
+        return 0
     p_left, p_right = p[p_i], p[p_i + 1]
     t_left, t_right = t[t_i], t[t_i + 1]
     lesson_left, lesson_right = intervals['lesson'][0], intervals['lesson'][1]
@@ -79,6 +81,26 @@ tests = [
              'pupil': [1594692033, 1594696347],
              'tutor': [1594692017, 1594692066, 1594692068, 1594696341]},
     'answer': 3565
+    },
+    {'intervals': {'lesson': [0, 0],
+             'pupil': [1594692033, 1594696347],
+             'tutor': [1594692017, 1594692066, 1594692068, 1594696341]},
+    'answer': 0
+    },
+    {'intervals': {'lesson': [1594692033, 1594692034],
+             'pupil': [1594692033, 1594696347],
+             'tutor': [1594692017, 1594692066, 1594692068, 1594696341]},
+    'answer': 1
+    },
+    {'intervals': {'lesson': [1594692033, 1594692034],
+             'pupil': [1594692033, 159469633],
+             'tutor': [1594692017, 1594692066, 1594692068, 1594696341]},
+    'answer': 0
+    },
+    {'intervals': {'lesson': [],
+             'pupil': [],
+             'tutor': []},
+    'answer': 0
     },
 ]
 
